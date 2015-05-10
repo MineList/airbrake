@@ -103,23 +103,30 @@ namespace :airbrake do
         Object.const_set(exception_name, Class.new(Exception))
       end
     end
-
+    puts "DE1"
     Rails.application.routes.draw do
       get 'verify' => 'application#verify', :as => 'verify', :via => :get
     end
+    puts "DE2"
 
     puts 'Processing request.'
 
     config = Rails.application.config
+    puts "DE3"
     protocol = (config.respond_to?(:force_ssl) && config.force_ssl) ? 'https' : 'http'
+    puts "DE4"
 
     env = Rack::MockRequest.env_for("#{protocol}://www.example.com/verify")
+    puts "DE5"
 
     Rails.application.call(env)
+    puts "DE6"
 
     wait_for_threads if defined? GirlFriday
+    puts "DE7"
 
     unstub_rake_exception_handling!
+    puts "DE8"
   end
 end
 
