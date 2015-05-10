@@ -117,6 +117,7 @@ namespace :airbrake do
     puts "DE4"
 
     env = Rack::MockRequest.env_for("#{protocol}://www.example.com/verify")
+    p env
     puts "DE5"
 
     Rails.application.call(env)
