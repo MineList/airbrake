@@ -116,7 +116,7 @@ namespace :airbrake do
     protocol = (config.respond_to?(:force_ssl) && config.force_ssl) ? 'https' : 'http'
     puts "DE4"
 
-    env = Rack::MockRequest.env_for("#{protocol}://www.example.com/verify")
+    env = Rack::MockRequest.env_for("/verify")
     p env
     puts "DE5"
 
